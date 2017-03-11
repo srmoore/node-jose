@@ -46,7 +46,7 @@
   "devDependencies": {
     "browserify-istanbul": "^2.0.0",
     "chai": "^3.5.0",
-    "conventional-changelog": "^1.1.0",
+    "conventional-changelog": "1.1.2",
     "del": "^2.2.0",
     "gulp": "^3.8.10",
     "gulp-eslint": "^3.0.1",
