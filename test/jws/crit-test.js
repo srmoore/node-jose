@@ -28,15 +28,14 @@ describe("jws/crit", function() {
       }
     };
     var jws = JWS.createSign(opts, key);
-    jws.update(new Buffer("something that should fail"));
+    jws.update(Buffer.from("something that should fail"));
     var p = jws.final();
     p = p.then(function(jws) {
       return JWS.createVerify(key).
              verify(jws).
              then(function() {
                assert.ok(false, "unexpected success");
-             }).
-             catch(function(err) {
+             }, function(err) {
                assert.ok(err instanceof Error);
              });
     });
@@ -53,7 +52,7 @@ describe("jws/crit", function() {
       }
     };
     var jws = JWS.createSign(opts, key);
-    jws.update(new Buffer("something that should not fail"));
+    jws.update(Buffer.from("something that should not fail"));
     var p = jws.final();
     p = p.then(function(jws) {
       return JWS.createVerify(key).
@@ -82,7 +81,7 @@ describe("jws/crit", function() {
       }
     };
     var jws = JWS.createSign(opts, key);
-    jws.update(new Buffer("something that should not fail"));
+    jws.update(Buffer.from("something that should not fail"));
     var p = jws.final();
     p = p.then(function(jws) {
       return JWS.createVerify(key).
@@ -121,7 +120,7 @@ describe("jws/crit", function() {
       }
     };
     var jws = JWS.createSign(opts, key);
-    jws.update(new Buffer("something that should not fail"));
+    jws.update(Buffer.from("something that should not fail"));
     var p = jws.final();
     p = p.then(function(jws) {
       return JWS.createVerify(key).

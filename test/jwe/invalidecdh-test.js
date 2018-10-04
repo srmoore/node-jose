@@ -27,7 +27,7 @@ describe("jwe/ecdhinvalid", function() {
       },
       alg: "ECDH-ES+A128KW",
       enc: "A128CBC-HS256",
-      plaintext: new Buffer("Gambling is illegal at Bushwood sir, and I never slice.", "utf8")
+      plaintext: Buffer.from("Gambling is illegal at Bushwood sir, and I never slice.", "utf8")
     }
   ];
   forEach(vectors, function(v) {
@@ -67,7 +67,7 @@ describe("jwe/ecdhinvalid", function() {
         //AND THAN CHINESE REMAINDER THEOREM FTW
         return jwe.decrypt(maliciousJWE1);
       });
-      promise = promise.then(function(result) {
+      promise = promise.then(function() {
         assert.ok(false, "unexpected success");
       }, function(err) {
         assert.ok(err);
